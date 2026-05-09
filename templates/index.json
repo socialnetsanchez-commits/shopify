@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "hero": {
+      "type": "ms100-hero",
+      "settings": {
+        "eyebrow": "Dropshipping store · Smart picks",
+        "heading": "Haz tu casa más cómoda, organizada y visual en minutos.",
+        "text": "Productos prácticos de hogar, relax y cocina pensados para compras rápidas, regalos útiles y rutinas diarias más simples.",
+        "button_label": "Ver productos",
+        "button_link": "#productos"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Productos destacados",
+        "collection": "mas-vendidos-ms100-store",
+        "products_to_show": 6
+      }
+    }
+  },
+  "order": ["hero", "featured_collection"]
+}
