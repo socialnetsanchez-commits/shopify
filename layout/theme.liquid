@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#060914">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <title>{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="logo" href="{{ routes.root_url }}">MS100 Store</a>
+      <nav class="nav-links">
+        <a href="{{ routes.root_url }}#productos">Productos</a>
+        <a href="{{ routes.collections_url }}">Colecciones</a>
+        <a class="cart-link" href="{{ routes.cart_url }}">Carrito</a>
+      </nav>
+    </header>
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    <footer class="site-footer">
+      <p>© {{ 'now' | date: '%Y' }} MS100 Store. Productos útiles para hogar, cocina y bienestar.</p>
+    </footer>
+  </body>
+</html>
