@@ -1,0 +1,48 @@
+<section class="product-page">
+  <div class="product-media">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 1000 | image_tag: loading: 'eager', alt: product.title }}
+    {% else %}
+      <div class="product-placeholder"><span>MS100</span></div>
+    {% endif %}
+  </div>
+
+  <div class="product-info">
+    <span class="badge">{{ product.type | default: 'Producto destacado' }}</span>
+    <h1>{{ product.title }}</h1>
+    <div class="product-price">{{ product.price | money }}</div>
+    <div class="product-description">{{ product.description }}</div>
+
+    {% form 'product', product %}
+      {% if product.variants.size > 1 %}
+        <label class="variant-label" for="ProductSelect">Elige una opción</label>
+        <select id="ProductSelect" name="id" class="variant-select">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+              {{ variant.title }} - {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+      {% else %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      {% endif %}
+
+      <button class="primary-button add-to-cart" type="submit" {% unless product.available %}disabled{% endunless %}>
+        {% if product.available %}Añadir al carrito{% else %}Agotado{% endif %}
+      </button>
+    {% endform %}
+
+    <div class="trust-boxes">
+      <div><strong>Pago seguro</strong><span>Checkout protegido por Shopify</span></div>
+      <div><strong>Compra sencilla</strong><span>Productos útiles y fáciles de entender</span></div>
+      <div><strong>Soporte</strong><span>Atención desde MS100 Store</span></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": []
+}
+{% endschema %}
