@@ -1,7 +1,8 @@
 <section id="productos" class="featured-products">
-  <div class="section-header">
-    <span class="badge">Catálogo</span>
+  <div class="section-header centered">
+    <span class="badge">Catálogo seleccionado</span>
     <h2>{{ section.settings.heading }}</h2>
+    <p>Productos prácticos para hogar, cocina, escritorio y relax.</p>
   </div>
 
   {% assign selected_collection = collections[section.settings.collection] %}
@@ -14,12 +15,26 @@
             {% if product.featured_image %}
               {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title }}
             {% else %}
-              <div class="placeholder"></div>
+              {% assign title_downcase = product.title | downcase %}
+              {% if title_downcase contains 'lámpara' or title_downcase contains 'lampara' %}
+                <img src="{{ 'product-lampara-led.svg' | asset_url }}" alt="{{ product.title }}" loading="lazy">
+              {% elsif title_downcase contains 'sellador' %}
+                <img src="{{ 'product-sellador-bolsas.svg' | asset_url }}" alt="{{ product.title }}" loading="lazy">
+              {% elsif title_downcase contains 'cable' %}
+                <img src="{{ 'product-cables-escritorio.svg' | asset_url }}" alt="{{ product.title }}" loading="lazy">
+              {% elsif title_downcase contains 'difusor' %}
+                <img src="{{ 'product-difusor-ambiente.svg' | asset_url }}" alt="{{ product.title }}" loading="lazy">
+              {% elsif title_downcase contains 'cojín' or title_downcase contains 'cojin' %}
+                <img src="{{ 'product-cojin-lumbar.svg' | asset_url }}" alt="{{ product.title }}" loading="lazy">
+              {% else %}
+                <img src="{{ 'product-organizador-cocina.svg' | asset_url }}" alt="{{ product.title }}" loading="lazy">
+              {% endif %}
             {% endif %}
           </a>
           <div class="product-body">
+            <span class="mini-tag">MS100 Pick</span>
             <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
-            <p>{{ product.description | strip_html | truncate: 96 }}</p>
+            <p>{{ product.description | strip_html | truncate: 110 }}</p>
             <div class="price-row">
               <span>{{ product.price | money }}</span>
               <a href="{{ product.url }}">Ver producto</a>
