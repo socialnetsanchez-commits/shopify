@@ -3,7 +3,20 @@
     {% if product.featured_image %}
       {{ product.featured_image | image_url: width: 1000 | image_tag: loading: 'eager', alt: product.title }}
     {% else %}
-      <div class="product-placeholder"><span>MS100</span></div>
+      {% assign title_downcase = product.title | downcase %}
+      {% if title_downcase contains 'lámpara' or title_downcase contains 'lampara' %}
+        <img src="{{ 'product-lampara-led.svg' | asset_url }}" alt="{{ product.title }}" loading="eager">
+      {% elsif title_downcase contains 'sellador' %}
+        <img src="{{ 'product-sellador-bolsas.svg' | asset_url }}" alt="{{ product.title }}" loading="eager">
+      {% elsif title_downcase contains 'cable' %}
+        <img src="{{ 'product-cables-escritorio.svg' | asset_url }}" alt="{{ product.title }}" loading="eager">
+      {% elsif title_downcase contains 'difusor' %}
+        <img src="{{ 'product-difusor-ambiente.svg' | asset_url }}" alt="{{ product.title }}" loading="eager">
+      {% elsif title_downcase contains 'cojín' or title_downcase contains 'cojin' %}
+        <img src="{{ 'product-cojin-lumbar.svg' | asset_url }}" alt="{{ product.title }}" loading="eager">
+      {% else %}
+        <img src="{{ 'product-organizador-cocina.svg' | asset_url }}" alt="{{ product.title }}" loading="eager">
+      {% endif %}
     {% endif %}
   </div>
 
