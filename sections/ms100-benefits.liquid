@@ -1,0 +1,24 @@
+<section class="benefits-section">
+  <div class="section-header centered">
+    <span class="badge">Por qué comprar aquí</span>
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.text }}</p>
+  </div>
+
+  <div class="benefits-grid">
+    <article><strong>01</strong><h3>Productos útiles</h3><p>Seleccionados para resolver problemas reales de orden, comodidad y ambiente.</p></article>
+    <article><strong>02</strong><h3>Diseño visual</h3><p>Artículos pensados para verse bien en casa y ser fáciles de entender al instante.</p></article>
+    <article><strong>03</strong><h3>Compra simple</h3><p>Precios claros, checkout de Shopify y experiencia rápida desde móvil.</p></article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MS100 Benefits",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Una tienda simple, moderna y enfocada en productos que sí se entienden" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "MS100 Store reúne productos prácticos para hogar, cocina, escritorio y relax con una experiencia visual clara y profesional." }
+  ],
+  "presets": [{ "name": "MS100 Benefits" }]
+}
+{% endschema %}
