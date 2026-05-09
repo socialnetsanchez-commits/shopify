@@ -1,0 +1,39 @@
+<section class="cart-page">
+  <h1>Tu carrito</h1>
+
+  {% if cart.item_count > 0 %}
+    <form action="{{ routes.cart_url }}" method="post" novalidate>
+      <div class="cart-items">
+        {% for item in cart.items %}
+          <div class="cart-item">
+            <div>
+              <h3>{{ item.product.title }}</h3>
+              <p>{{ item.variant.title }}</p>
+              <p>{{ item.final_line_price | money }}</p>
+            </div>
+            <input type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="cart-summary">
+        <h2>Total: {{ cart.total_price | money }}</h2>
+        <button class="secondary-button" type="submit" name="update">Actualizar</button>
+        <button class="primary-button" type="submit" name="checkout">Finalizar compra</button>
+      </div>
+    </form>
+  {% else %}
+    <div class="empty-state">
+      <h2>Tu carrito está vacío</h2>
+      <p>Explora los productos destacados de MS100 Store.</p>
+      <a class="primary-button" href="{{ routes.root_url }}#productos">Ver productos</a>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Main cart",
+  "settings": []
+}
+{% endschema %}
