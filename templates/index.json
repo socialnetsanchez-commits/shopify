@@ -3,11 +3,18 @@
     "hero": {
       "type": "ms100-hero",
       "settings": {
-        "eyebrow": "Dropshipping store · Smart picks",
-        "heading": "Haz tu casa más cómoda, organizada y visual en minutos.",
-        "text": "Productos prácticos de hogar, relax y cocina pensados para compras rápidas, regalos útiles y rutinas diarias más simples.",
-        "button_label": "Ver productos",
+        "eyebrow": "Nuevo · Hogar inteligente · Envío directo",
+        "heading": "Productos útiles para transformar tu casa sin complicarte.",
+        "text": "MS100 Store selecciona accesorios de hogar, cocina, escritorio y relax pensados para ordenar, decorar y hacer tu rutina más cómoda.",
+        "button_label": "Ver productos destacados",
         "button_link": "#productos"
+      }
+    },
+    "benefits": {
+      "type": "ms100-benefits",
+      "settings": {
+        "heading": "Compra visual, clara y enfocada en utilidad diaria",
+        "text": "Una experiencia profesional con productos sencillos de entender, precios claros y navegación rápida desde móvil."
       }
     },
     "featured_collection": {
@@ -19,5 +26,5 @@
       }
     }
   },
-  "order": ["hero", "featured_collection"]
+  "order": ["hero", "benefits", "featured_collection"]
 }
